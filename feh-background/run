@@ -1,0 +1,3 @@
+#!/bin/sh
+/usr/bin/feh --bg-fill '/home/stil/wallpaper-47057.jpg'
+exec "$RS_HANGIT"

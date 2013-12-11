@@ -1,0 +1,3 @@
+#!/bin/sh
+cd "$HOME"
+exec /home/stil/opt/dwm/dwm

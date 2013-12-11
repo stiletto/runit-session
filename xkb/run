@@ -1,0 +1,8 @@
+#!/bin/sh
+/usr/bin/setxkbmap -layout 'us,ru(typewriter)'
+/usr/bin/setxkbmap -option 'compose:ralt'
+/usr/bin/setxkbmap -option 'grp:caps_toggle' -option 'grp_led:scroll' -option 'grp_led:caps'
+/usr/bin/xmodmap /home/stil/.Xmodmap
+/usr/bin/xset r rate 150 50
+/usr/bin/xinput set-prop 'pointer:Microsoft Microsoft Wireless Optical Desktop® 2.10' 'Evdev Middle Button Emulation' 1
+exec "$RS_HANGIT"

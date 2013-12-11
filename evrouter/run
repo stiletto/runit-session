@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /home/stil/opt/evrouter/bin/evrouter -f /dev/input/by-id/usb-Microsoft_Natural®_Ergonomic_Keyboard_4000-if01-event-kbd

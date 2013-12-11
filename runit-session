@@ -1,0 +1,29 @@
+#!/bin/bash
+
+die() {
+    echo -e "---- \033[1;37m[\033[1;31m!!!\033[1;37m] $2\033[0;m"
+    exit "$1"
+}
+
+export RS_CONFIG="$1"
+export RS_SESSION="$(mktemp -d /tmp/.rs-$USER-XXXXXX)"
+
+[ -d "$RS_SESSION" ] || die 1 "Session dir is shit"
+
+export RS_HANGIT="$RS_CONFIG/hangit"
+
+cd "$RS_CONFIG"
+
+for svc in *; do
+    test -d "$svc" || continue
+    test -e "$svc/disabled"  && continue
+    cp -rL "$RS_CONFIG/$svc" "$RS_SESSION/$svc"
+done
+
+cd "$HOME"
+
+#trap 'rm -rf "$RS_SESSION"' INT QUIT TERM EXIT
+(
+    export RS_PID="$$"
+    exec runsvdir "$RS_SESSION"
+)
