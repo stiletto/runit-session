@@ -6,7 +6,12 @@ die() {
 }
 
 export RS_CONFIG="$1"
-export RS_SESSION="$(mktemp -d /tmp/.rs-$USER-XXXXXX)"
+if [ -d "/run/user/$UID" ]; then
+    # use /run if there is a systemd because its fucked up /tmp cleaner breaks runit-session
+    export RS_SESSION="$(mktemp -d /run/user/$UID/runit-session-XXXXX)"
+else
+    export RS_SESSION="$(mktemp -d /tmp/.rs-$USER-XXXXXX)"
+fi
 
 [ -d "$RS_SESSION" ] || die 1 "Session dir is shit"
 
@@ -23,7 +28,8 @@ done
 cd "$HOME"
 
 #trap 'rm -rf "$RS_SESSION"' INT QUIT TERM EXIT
-(
+#(
     export RS_PID="$$"
+    export SVDIR="$RS_SESSION"
     exec runsvdir "$RS_SESSION"
-)
+#)
