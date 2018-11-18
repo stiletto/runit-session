@@ -6,8 +6,11 @@ die() {
 }
 
 export RS_CONFIG="$1"
+
+[ -d "$RS_CONFIG" ] || die 1 "Usage: $0 <config directory>"
+
 if [ -d "/run/user/$UID" ]; then
-    # use /run if there is a systemd because its fucked up /tmp cleaner breaks runit-session
+    # use /run when under systemd because its fucked up /tmp cleaner breaks runit-session
     export RS_SESSION="$(mktemp -d /run/user/$UID/runit-session-XXXXX)"
 else
     export RS_SESSION="$(mktemp -d /tmp/.rs-$USER-XXXXXX)"

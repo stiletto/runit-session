@@ -5,7 +5,13 @@ Simple session manager using runit
 
 All services in this repo are just examples. The only two things ready to use are runit-session and hangit
 
+Why?
+====
+Because you don't want your whole session to crash while you are experimenting with your window manager
+
+
 How to use:
+===========
 
 Clone the repo:
 ```

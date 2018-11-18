@@ -1,0 +1,3 @@
+#!/bin/sh
+while ! pidof xscreensaver; do sleep 0.1; done
+xscreensaver-command -watch | logger -t xscreensaver

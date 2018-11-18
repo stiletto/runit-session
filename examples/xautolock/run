@@ -1,0 +1,3 @@
+#!/bin/sh
+locker="i3lock -T -e -c 000000 -F 00ff00"
+exec xautolock -time 15 -locker "${locker}"

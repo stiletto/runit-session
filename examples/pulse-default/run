@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pactl set-default-sink Xonar_U7_Combo_Output
+
+exec "$RS_HANGIT"

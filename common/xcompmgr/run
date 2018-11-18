@@ -1,0 +1,3 @@
+#!/bin/sh
+#exec xcompmgr -a
+exec xcompmgr -n

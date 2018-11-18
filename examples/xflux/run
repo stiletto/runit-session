@@ -1,0 +1,2 @@
+#!/bin/sh
+exec ~/opt/xflux/xflux -l 56 -g 53 -nofork
