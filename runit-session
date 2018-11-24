@@ -18,9 +18,11 @@ fi
 
 [ -d "$RS_SESSION" ] || die 1 "Session dir is shit"
 
-export RS_HANGIT="$RS_CONFIG/hangit"
+export RS_HANGIT="$(dirname -- "$(readlink -f -- "$0")")/hangit" # "
 
 cd "$RS_CONFIG"
+
+[ -s "rs-env" ] && source "rs-env"
 
 for svc in *; do
     test -d "$svc" || continue
